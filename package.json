@@ -1,0 +1,28 @@
+{
+  "name": "primera-entrega-mocks",
+  "version": "1.0.0",
+  "description": "BackEnd3 - Entrega N1: Router de mocks para generar e insertar usuarios y mascotas",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "coderhouse",
+    "backend3",
+    "mocking",
+    "faker"
+  ],
+  "author": "Felipe Gutierrez",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^9.0.0",
+    "bcrypt": "^6.0.0",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
