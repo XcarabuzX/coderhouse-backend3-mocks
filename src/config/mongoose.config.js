@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = 'mongodb://127.0.0.1:27017/mocks?directConnection=true';
+// La URL viene de la variable de entorno MONGO_URL (útil para Docker/tests).
+// Si no existe, usa la base local por defecto.
+const MONGODB_URI =
+  process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/mocks?directConnection=true';
 
 export const connectDB = async () => {
   try {
