@@ -1,0 +1,31 @@
+services:
+  # Servicio de la API (se construye desde el Dockerfile de este proyecto).
+  app:
+    build: .
+    image: gutiruloso/adoptme-backend3:1.0.0
+    container_name: adoptme-app
+    ports:
+      - "8080:8080"
+    environment:
+      # "mongo" es el nombre del OTRO servicio: dentro de la red de compose
+      # ese nombre funciona como hostname. Por eso NO usamos 127.0.0.1.
+      MONGO_URL: mongodb://mongo:27017/mocks
+      PORT: 8080
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  # Servicio de base de datos MongoDB (imagen oficial).
+  mongo:
+    image: mongo:7
+    container_name: adoptme-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      # Persiste los datos aunque borres el contenedor.
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+# Volumen con nombre donde MongoDB guarda su información.
+volumes:
+  mongo_data:

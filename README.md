@@ -66,6 +66,20 @@ docker login
 docker push gutiruloso/adoptme-backend3:1.0.0
 ```
 
+### Opción recomendada: Docker Compose (app + MongoDB juntos)
+
+No requiere tener MongoDB instalado en tu máquina: el `docker-compose.yml`
+levanta la API **y** su propia base de datos MongoDB, conectadas entre sí.
+
+```bash
+docker compose up -d      # levanta app + mongo en segundo plano
+docker compose logs -f    # ver logs en vivo
+docker compose down       # detener y eliminar los contenedores (los datos persisten en el volumen)
+```
+
+La app queda en **http://localhost:8080** y se conecta a Mongo mediante el hostname
+`mongo` (el nombre del servicio dentro de la red de compose).
+
 ## 📚 Documentación Swagger
 
 Con el servidor corriendo, la documentación interactiva del módulo **Users** está en:
